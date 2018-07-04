@@ -40,6 +40,5 @@ class InputNewTaskField extends Component {
 InputNewTaskField.protoType = {
   classes: PropTypes.object.isRequired,
 };
-//          onChange={(e) => this.handleChange(e.target.value)}
 
 export default withStyles(styles)(InputNewTaskField);
