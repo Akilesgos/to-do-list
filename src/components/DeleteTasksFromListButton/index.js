@@ -7,14 +7,17 @@ import Button from '@material-ui/core/Button';
 import styles from './styles';
 
 const DeleteTasksFromListButton = (props) => {
-  const { handleDeleteClick } = props;
+  const { handleDeleteClick, classes } = props;
 
   return (
-    <div>
-      <Button onClick={handleDeleteClick} variant="contained" color="primary">
-        Remove things
-      </Button>
-    </div>
+    <Button
+      className={classes.button}
+      onClick={handleDeleteClick}
+      variant="contained"
+      color="primary"
+    >
+      Remove things
+    </Button>
   );
 };
 
