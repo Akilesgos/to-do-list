@@ -2,14 +2,16 @@ const styles = (theme) => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    justify: 'center',
+    align: 'center',
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
-  },
-  menu: {
-    width: 200,
+    marginTop: '15%',
+    align: 'center',
+    marginLeft: '30%',
+    marginRight: '30%',
+    width: '30%',
+    alignItems: 'justify-xs-center',
   },
 });
 

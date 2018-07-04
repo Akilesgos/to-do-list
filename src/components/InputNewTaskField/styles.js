@@ -5,7 +5,11 @@ const styles = (theme) => ({
   },
   input: {
     margin: theme.spacing.unit,
+    width: '100%',
+    maxWidth: 360,
   },
 });
 
 export default styles;
+
+//    margin: theme.spacing.unit,

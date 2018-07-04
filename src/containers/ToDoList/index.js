@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import update from 'react-addons-update'; // ES6
 
+import { withStyles } from '@material-ui/core/styles';
+
 import InputNewTaskField from 'components/InputNewTaskField';
 import TaskOfTheList from 'components/TaskOfTheList';
 import DeleteTasksFromListButton from 'components/DeleteTasksFromListButton';
+import styles from './styles';
 
 class TodoList extends Component {
   DEFAUL_STATE = {
@@ -52,7 +55,7 @@ class TodoList extends Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.classes.root}>
         <InputNewTaskField addNewItem={this.addNewItem} />
         <TaskOfTheList
           items={this.state.listItems}
@@ -64,11 +67,9 @@ class TodoList extends Component {
             handleDeleteClick={this.handleDeleteClick}
           />
         )}
-        <br />
-        <hr />
       </div>
     );
   }
 }
 
-export default TodoList;
+export default withStyles(styles)(TodoList);

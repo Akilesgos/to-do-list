@@ -12,17 +12,18 @@ class InputNewTaskField extends Component {
     inputValue: '',
   };
 
-  handleChange = (value) => this.setState({ inputValue: value });
+  handleChange = (event) => this.setState({ inputValue: event.target.value });
 
   render() {
     const { inputValue } = this.state;
-    const { addNewItem } = this.props;
+    const { addNewItem, classes } = this.props;
 
     return (
       <div>
         <Input
+          className={classes.input}
           value={inputValue}
-          onChange={(e) => this.handleChange(e.target.value)}
+          onChange={this.handleChange}
           inputProps={{
             'aria-label': 'Description',
           }}
@@ -39,5 +40,6 @@ class InputNewTaskField extends Component {
 InputNewTaskField.protoType = {
   classes: PropTypes.object.isRequired,
 };
+//          onChange={(e) => this.handleChange(e.target.value)}
 
 export default withStyles(styles)(InputNewTaskField);
