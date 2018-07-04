@@ -12,3 +12,5 @@ const styles = (theme) => ({
     width: 200,
   },
 });
+
+export default styles;

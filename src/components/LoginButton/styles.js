@@ -1,3 +1,5 @@
+import brown from '@material-ui/core/colors/brown';
+
 const styles = (theme) => ({
   button: {
     margin: theme.spacing.unit,
@@ -8,3 +10,5 @@ const styles = (theme) => ({
     display: 'none',
   },
 });
+
+export default styles;

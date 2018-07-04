@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-import LoginButton from '../components/LoginButtons';
+import LoginButton from 'components/LoginButton';
 import styles from './styles';
 
-class LoginForm extends Component {
+class Authorization extends Component {
   password = 'exampleAnthony';
   state = {
     name: 'Enter your name',
@@ -20,7 +20,7 @@ class LoginForm extends Component {
   };
 
   onLoginSubmit = (e) => {
-    if (this.password == this.state.name) {
+    if (this.password === this.state.name) {
       this.setState({
         access: !this.state.access,
       });
@@ -33,7 +33,8 @@ class LoginForm extends Component {
   render() {
     const { classes } = this.props;
     if (this.state.access) {
-      return <Redirect to="/toDolist" />;
+      console.log('this.state.access', this.state.access);
+      return <Redirect to="/toDoList" />;
     }
 
     return (
@@ -55,8 +56,8 @@ class LoginForm extends Component {
   }
 }
 
-LoginForm.propTypes = {
+Authorization.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(LoginForm);
+export default withStyles(styles)(Authorization);

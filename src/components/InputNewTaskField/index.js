@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
+import AddNewTaskToListButton from '../AddNewTaskToListButton';
 
 import styles from './styles';
 
-class InputNewThings extends Component {
+class InputNewTaskField extends Component {
   state = {
     inputValue: '',
   };
@@ -16,7 +16,7 @@ class InputNewThings extends Component {
 
   render() {
     const { inputValue } = this.state;
-    const { addNewItem } = this.props; //диструктизация
+    const { addNewItem } = this.props;
 
     return (
       <div>
@@ -27,20 +27,17 @@ class InputNewThings extends Component {
             'aria-label': 'Description',
           }}
         />
-        <Button
-          variant="contained"
-          onClick={() => addNewItem(inputValue)}
-          color="primary"
-        >
-          Add new things
-        </Button>
+        <AddNewTaskToListButton
+          addNewItem={addNewItem}
+          inputValue={inputValue}
+        />
       </div>
     );
   }
 }
 
-InputNewThings.protoType = {
+InputNewTaskField.protoType = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(InputNewThings);
+export default withStyles(styles)(InputNewTaskField);

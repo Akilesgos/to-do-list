@@ -6,3 +6,5 @@ const styles = (theme) => ({
     display: 'none',
   },
 });
+
+export default styles;

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import update from 'react-addons-update'; // ES6
 
-import { Button } from '@material-ui/core';
-
-import ImportNewThings from '../components/ImportNewThings';
-import ItemsList from '../components/ItemsList';
-
-import '../App.css';
+import InputNewTaskField from 'components/InputNewTaskField';
+import TaskOfTheList from 'components/TaskOfTheList';
+import DeleteTasksFromListButton from 'components/DeleteTasksFromListButton';
 
 class TodoList extends Component {
   DEFAUL_STATE = {
@@ -56,20 +53,16 @@ class TodoList extends Component {
   render() {
     return (
       <div>
-        <ImportNewThings addNewItem={this.addNewItem} />
-        <ItemsList
+        <InputNewTaskField addNewItem={this.addNewItem} />
+        <TaskOfTheList
           items={this.state.listItems}
           addNewStatus={this.addNewStatus}
         />
         {/* неявные приобразования */}
         {this.anyChecked() && (
-          <Button
-            onClick={this.handleDeleteClick}
-            variant="contained"
-            color="primary"
-          >
-            Remove things
-          </Button>
+          <DeleteTasksFromListButton
+            handleDeleteClick={this.handleDeleteClick}
+          />
         )}
         <br />
         <hr />

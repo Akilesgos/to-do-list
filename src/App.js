@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Route from 'react-router-dom/Route';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import TodoList from './containers/TodoList';
-import LoginForm from './containerLoginForm/LoginForm';
+import ToDoList from 'containers/ToDoList';
+import Authorization from 'containers/Authorization';
 
 class App extends Component {
   render() {
-    const { classes } = this.props;
-
     return (
       <Router>
         <div>
-          <Route path="/" exact component={LoginForm} />
-          <Route path="/toDolist" exact component={TodoList} />
+          <Route path="/" exact component={Authorization} />
+          <Route path="/toDoList" exact component={ToDoList} />
         </div>
       </Router>
     );
