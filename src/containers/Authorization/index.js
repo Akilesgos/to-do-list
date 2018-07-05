@@ -34,6 +34,7 @@ class Authorization extends Component {
 
   render() {
     const { classes } = this.props;
+
     if (this.state.access) {
       return <Redirect to="/toDoList" />;
     }

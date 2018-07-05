@@ -70,12 +70,12 @@ class TodoList extends Component {
           <TaskOfTheList
             items={this.state.listItems}
             addNewStatus={this.addNewStatus}
-            classes={classes}
           />
           {/* неявные приобразования */}
           {this.anyChecked() && (
             <DeleteTasksFromListButton
               handleDeleteClick={this.handleDeleteClick}
+              classes={classes}
             />
           )}
         </Paper>

@@ -12,13 +12,13 @@ const styles = (theme) => ({
     padding: theme.spacing.unit,
   },
   textField: {
-    maxWidth: '100%',
-    width: 300,
+    width: '100%',
+    maxWidth: 360,
   },
   button: {
-    marginTop: '5%',
-    maxWidth: '100%',
-    width: 300,
+    marginTop: '2%',
+    width: '100%',
+    maxWidth: 360,
   },
 });
 

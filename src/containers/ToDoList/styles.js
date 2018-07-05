@@ -1,3 +1,5 @@
+import green from '@material-ui/core/colors/green';
+
 const styles = (theme) => ({
   paper: {
     flexGrow: 1,
@@ -9,16 +11,28 @@ const styles = (theme) => ({
     color: theme.palette.text.secondary,
   },
   input: {
-    margin: theme.spacing.unit,
     width: '100%',
     maxWidth: 360,
   },
   button: {
-    marginTop: '2%',
-    marginLeft: '2%',
-    marginRight: '100%',
+    marginTop: '4%',
     width: '100%',
     maxWidth: 360,
   },
+  root: {
+    color: green[600],
+    '&$checked': {
+      color: green[500],
+    },
+  },
+  checked: {},
+  size: {
+    width: 40,
+    height: 40,
+  },
+  sizeIcon: {
+    fontSize: 20,
+  },
 });
+
 export default styles;
