@@ -11,5 +11,3 @@ const styles = (theme) => ({
 });
 
 export default styles;
-
-//    margin: theme.spacing.unit,
