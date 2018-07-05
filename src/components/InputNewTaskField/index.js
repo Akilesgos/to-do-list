@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import AddNewTaskToListButton from '../AddNewTaskToListButton';
-
-import styles from './styles';
 
 class InputNewTaskField extends Component {
   state = {
@@ -31,6 +28,7 @@ class InputNewTaskField extends Component {
         <AddNewTaskToListButton
           addNewItem={addNewItem}
           inputValue={inputValue}
+          classes={classes}
         />
       </div>
     );
@@ -41,4 +39,4 @@ InputNewTaskField.protoType = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(InputNewTaskField);
+export default InputNewTaskField;

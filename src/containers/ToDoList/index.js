@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import update from 'react-addons-update'; // ES6
 
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 import InputNewTaskField from 'components/InputNewTaskField';
 import TaskOfTheList from 'components/TaskOfTheList';
@@ -54,20 +56,30 @@ class TodoList extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <div className={this.props.classes.root}>
-        <InputNewTaskField addNewItem={this.addNewItem} />
-        <TaskOfTheList
-          items={this.state.listItems}
-          addNewStatus={this.addNewStatus}
-        />
-        {/* неявные приобразования */}
-        {this.anyChecked() && (
-          <DeleteTasksFromListButton
-            handleDeleteClick={this.handleDeleteClick}
+      <Grid
+        container
+        justify={'center'}
+        alignItems={'center'}
+        direction={'column'}
+      >
+        <Paper className={classes.paper}>
+          <InputNewTaskField addNewItem={this.addNewItem} classes={classes} />
+          <TaskOfTheList
+            items={this.state.listItems}
+            addNewStatus={this.addNewStatus}
+            classes={classes}
           />
-        )}
-      </div>
+          {/* неявные приобразования */}
+          {this.anyChecked() && (
+            <DeleteTasksFromListButton
+              handleDeleteClick={this.handleDeleteClick}
+            />
+          )}
+        </Paper>
+      </Grid>
     );
   }
 }

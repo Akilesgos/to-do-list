@@ -1,19 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-import styles from './styles';
-
 const LoginButton = (props) => {
-  const { classes, onLoginSubmit } = props;
+  const { onLoginSubmit, classes } = props;
 
   return (
     <Button
       variant="contained"
-      color="primary"
       className={classes.button}
+      color="primary"
       onClick={onLoginSubmit}
     >
       Login
@@ -26,4 +23,4 @@ LoginButton.propTypes = {
   onLoginSubmit: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(LoginButton);
+export default LoginButton;
