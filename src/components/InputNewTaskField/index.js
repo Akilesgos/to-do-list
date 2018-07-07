@@ -13,12 +13,12 @@ class InputNewTaskField extends Component {
 
   render() {
     const { inputValue } = this.state;
-    const { addNewItem, classes } = this.props;
+    const { addNewItem, input, button } = this.props;
 
     return (
       <div>
         <Input
-          className={classes.input}
+          className={input}
           value={inputValue}
           onChange={this.handleChange}
           inputProps={{
@@ -28,7 +28,7 @@ class InputNewTaskField extends Component {
         <AddNewTaskToListButton
           addNewItem={addNewItem}
           inputValue={inputValue}
-          classes={classes}
+          button={button}
         />
       </div>
     );

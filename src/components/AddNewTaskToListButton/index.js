@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 const AddNewTaskToListButton = (props) => {
-  const { addNewItem, inputValue, classes } = props;
+  const { addNewItem, inputValue, button } = props;
 
   return (
     <Button
-      className={classes.button}
+      className={button}
       variant="contained"
-      onClick={() => addNewItem(inputValue)}
+      onClick={() => addNewItem(inputValue)} //
       color="primary"
     >
       Add new things

@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 const LoginButton = (props) => {
-  const { onLoginSubmit, classes } = props;
+  const { onLoginSubmit, button } = props;
 
   return (
     <Button
       variant="contained"
-      className={classes.button}
+      className={button}
       color="primary"
       onClick={onLoginSubmit}
     >
@@ -19,7 +19,7 @@ const LoginButton = (props) => {
 };
 
 LoginButton.propTypes = {
-  classes: PropTypes.object.isRequired,
+  button: PropTypes.string.isRequired,
   onLoginSubmit: PropTypes.func.isRequired,
 };
 

@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 const DeleteTasksFromListButton = (props) => {
-  const { handleDeleteClick, classes } = props;
+  const { handleDeleteClick, button } = props;
 
   return (
     <Button
-      className={classes.button}
+      className={button}
       onClick={handleDeleteClick}
       variant="contained"
       color="primary"
