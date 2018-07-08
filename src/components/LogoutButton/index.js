@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, withRouter } from 'react-router-dom';
+
 import Button from '@material-ui/core/Button';
 
 const LogoutButton = withRouter((props) => {

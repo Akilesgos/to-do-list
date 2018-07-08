@@ -6,6 +6,8 @@ import Authorization from 'containers/Authorization';
 
 class App extends Component {
   render() {
+    console.info(`render(App) at${Date.now()}`);
+
     return (
       <Router>
         <div>

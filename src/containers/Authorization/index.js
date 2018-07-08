@@ -39,12 +39,18 @@ class Authorization extends Component {
     }
   };
 
+  isAuthorized = () => {
+    const { access } = this.state;
+    return access || cookies.get('cookieAccess');
+  };
   render() {
+    console.info(`render() at${Date.now()}`);
+
     const {
       classes: { paper, containerform, textField, button },
     } = this.props;
 
-    if (this.state.access || cookies.get('cookieAccess')) {
+    if (this.isAuthorized()) {
       return <Redirect to="/toDoList" />;
     }
 
@@ -61,6 +67,7 @@ class Authorization extends Component {
               <TextField
                 id="name"
                 label="Enter Your name"
+                placeholder="Enter Your name"
                 className={textField}
                 value={this.state.name}
                 onChange={this.onLoginChange}
