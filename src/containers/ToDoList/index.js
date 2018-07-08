@@ -6,11 +6,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-import { cookies } from '../Authorization';
 import InputNewTaskField from 'components/InputNewTaskField';
 import TaskOfTheList from 'components/TaskOfTheList';
 import DeleteTasksFromListButton from 'components/DeleteTasksFromListButton';
-import LogoutButton from 'components/LogoutButton';
 
 import styles from './styles';
 
@@ -63,10 +61,6 @@ class TodoList extends Component {
       classes: { paper, input, button },
     } = this.props;
 
-    if (!cookies.get('cookieAccess')) {
-      return <Redirect to="/" />;
-    }
-
     return (
       <Grid container justify="center" alignItems="center" direction="column">
         <Paper className={paper}>
@@ -79,7 +73,6 @@ class TodoList extends Component {
             items={this.state.listItems}
             addNewStatus={this.addNewStatus}
           />
-          <LogoutButton button={button} cookies={cookies} />
           {/* неявные приобразования */}
           {this.anyChecked() && (
             <DeleteTasksFromListButton

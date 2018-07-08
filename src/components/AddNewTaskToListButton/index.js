@@ -10,7 +10,7 @@ const AddNewTaskToListButton = (props) => {
     <Button
       className={button}
       variant="contained"
-      onClick={() => addNewItem(inputValue)} //
+      onClick={() => addNewItem(inputValue)}
       color="primary"
     >
       Add new things
