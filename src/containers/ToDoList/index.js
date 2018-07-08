@@ -63,9 +63,10 @@ class TodoList extends Component {
       classes: { paper, input, button },
     } = this.props;
 
-    if (cookies.get('cookieAccess') === undefined) {
+    if (!cookies.get('cookieAccess')) {
       return <Redirect to="/" />;
     }
+
     return (
       <Grid container justify="center" alignItems="center" direction="column">
         <Paper className={paper}>

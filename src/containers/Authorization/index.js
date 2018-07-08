@@ -43,12 +43,11 @@ class Authorization extends Component {
     const {
       classes: { paper, containerform, textField, button },
     } = this.props;
-    if (this.state.access) {
+
+    if (this.state.access || cookies.get('cookieAccess')) {
       return <Redirect to="/toDoList" />;
     }
-    if (cookies.get('cookieAccess')) {
-      return <Redirect to="/toDoList" />;
-    }
+
     return (
       <Grid container alignItems="center" direction="column">
         <Paper className={paper}>
