@@ -12,101 +12,61 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Button from '@material-ui/core/Button';
 
 const styles = {
   root: {
     flexGrow: 1,
+    padding: -12,
+    margin: 0,
   },
   flex: {
     flex: 1,
   },
   menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+    color: 'white',
+    height: 50,
+    width: 50,
+    maxWidth: 100,
+    padding: -22,
+    margin: 0,
   },
 };
 
 class MenuAppBar extends React.Component {
   state = {
-    auth: true,
-    anchorEl: null,
+    value: 'recents',
   };
 
-  handleChange = (event, checked) => {
-    this.setState({ auth: checked });
-  };
-
-  handleMenu = (event) => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
+  handleChange = (event, value) => {
+    this.setState({ value });
   };
 
   render() {
     const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
-    const open = Boolean(anchorEl);
+    const { value } = this.state;
 
     return (
       <div className={classes.root}>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={auth}
-                onChange={this.handleChange}
-                aria-label="LoginSwitch"
-              />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          />
-        </FormGroup>
+        <AppBar position="static">
+          <Toolbar />
+        </AppBar>
+
         <AppBar position="static">
           <Toolbar>
-            <IconButton
+            <Button
               className={classes.menuButton}
-              color="inherit"
-              aria-label="Menu"
+              onClick={this.handleChange}
+              label="Recents"
+              value="recents"
             >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              variant="title"
-              color="inherit"
-              className={classes.flex}
-            >
-              Title
-            </Typography>
-            {auth && (
-              <div>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                </Menu>
-              </div>
+              sadas
+            </Button>
+            <Button href="/" className={classes.button}>
+              Link
+            </Button>
+            <Button className={classes.menuButton}>sadas</Button>
+            <div />
             )}
           </Toolbar>
         </AppBar>
