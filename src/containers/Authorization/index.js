@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { Cookies } from 'react-cookie';
 
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -10,8 +9,6 @@ import Paper from '@material-ui/core/Paper';
 
 import LoginButton from 'components/LoginButton';
 import styles from './styles';
-
-export const cookies = new Cookies();
 
 class Authorization extends Component {
   PASSWORD = 'example';
@@ -29,10 +26,6 @@ class Authorization extends Component {
       this.setState({
         access: !this.state.access,
       });
-      cookies.set('cookieAccess', true, {
-        path: '/',
-        expires: new Date(Date.now() + 3600000),
-      });
       alert(`Welcome ${this.state.name}`);
     } else {
       alert(`Sorry ${this.state.name} but you have entered wrong name`);
@@ -43,12 +36,11 @@ class Authorization extends Component {
     const {
       classes: { paper, containerform, textField, button },
     } = this.props;
+
     if (this.state.access) {
       return <Redirect to="/toDoList" />;
     }
-    if (cookies.get('cookieAccess')) {
-      return <Redirect to="/toDoList" />;
-    }
+
     return (
       <Grid container alignItems="center" direction="column">
         <Paper className={paper}>
@@ -62,6 +54,7 @@ class Authorization extends Component {
               <TextField
                 id="name"
                 label="Enter Your name"
+                placeholder="Enter Your name"
                 className={textField}
                 value={this.state.name}
                 onChange={this.onLoginChange}
