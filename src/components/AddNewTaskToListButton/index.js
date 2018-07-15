@@ -1,19 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-import styles from './styles';
-
 const AddNewTaskToListButton = (props) => {
-  const { addNewItem, inputValue, classes } = props;
+  const { addNewItem, inputValue, button } = props;
 
   return (
     <Button
-      className={classes.button}
+      className={button}
       variant="contained"
-      onClick={() => addNewItem(inputValue)}
+      onClick={() => addNewItem(inputValue)} //
       color="primary"
     >
       Add new things
@@ -26,4 +23,4 @@ AddNewTaskToListButton.propTypes = {
   inputValue: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles)(AddNewTaskToListButton);
+export default AddNewTaskToListButton;

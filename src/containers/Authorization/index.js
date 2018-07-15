@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { Cookies } from 'react-cookie';
 
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 import LoginButton from 'components/LoginButton';
 import styles from './styles';
 
+export const cookies = new Cookies();
+
 class Authorization extends Component {
-  password = 'exampleAnthony';
+  PASSWORD = 'example';
   state = {
-    name: 'Enter your name',
+    name: '',
     access: false,
   };
 
@@ -20,9 +25,13 @@ class Authorization extends Component {
   };
 
   onLoginSubmit = (e) => {
-    if (this.password === this.state.name) {
+    if (this.PASSWORD === this.state.name) {
       this.setState({
         access: !this.state.access,
+      });
+      cookies.set('cookieAccess', true, {
+        path: '/',
+        expires: new Date(Date.now() + 3600000),
       });
       alert(`Welcome ${this.state.name}`);
     } else {
@@ -31,26 +40,37 @@ class Authorization extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const {
+      classes: { paper, containerform, textField, button },
+    } = this.props;
     if (this.state.access) {
       return <Redirect to="/toDoList" />;
     }
-
+    if (cookies.get('cookieAccess')) {
+      return <Redirect to="/toDoList" />;
+    }
     return (
-      <div>
-        <form className={classes.container} noValidate autoComplete="off">
-          <TextField
-            id="name"
-            label="Enter Your name"
-            className={classes.textField}
-            value={this.state.name}
-            margin="normal"
-            onChange={this.onLoginChange}
-          />
-          <LoginButton onLoginSubmit={this.onLoginSubmit} />
-          <br />
-        </form>
-      </div>
+      <Grid container alignItems="center" direction="column">
+        <Paper className={paper}>
+          <form noValidate autoComplete="off" className={containerform}>
+            <Grid
+              container
+              justify="center"
+              alignItems="center"
+              direction="column"
+            >
+              <TextField
+                id="name"
+                label="Enter Your name"
+                className={textField}
+                value={this.state.name}
+                onChange={this.onLoginChange}
+              />
+              <LoginButton button={button} onLoginSubmit={this.onLoginSubmit} />
+            </Grid>
+          </form>
+        </Paper>
+      </Grid>
     );
   }
 }

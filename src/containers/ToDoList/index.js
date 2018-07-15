@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import update from 'react-addons-update'; // ES6
+import { Redirect } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
+import { cookies } from '../Authorization';
 import InputNewTaskField from 'components/InputNewTaskField';
 import TaskOfTheList from 'components/TaskOfTheList';
 import DeleteTasksFromListButton from 'components/DeleteTasksFromListButton';
+import LogoutButton from 'components/LogoutButton';
+
 import styles from './styles';
 
 class TodoList extends Component {
@@ -13,7 +19,6 @@ class TodoList extends Component {
     listItems: [],
   };
   state = this.DEFAUL_STATE;
-
   addNewItem = (item) => {
     if (this.anyItemsWithText(item)) {
       alert('You already added this item!');
@@ -54,20 +59,35 @@ class TodoList extends Component {
   };
 
   render() {
+    const {
+      classes: { paper, input, button },
+    } = this.props;
+
+    if (cookies.get('cookieAccess') === undefined) {
+      return <Redirect to="/" />;
+    }
     return (
-      <div className={this.props.classes.root}>
-        <InputNewTaskField addNewItem={this.addNewItem} />
-        <TaskOfTheList
-          items={this.state.listItems}
-          addNewStatus={this.addNewStatus}
-        />
-        {/* неявные приобразования */}
-        {this.anyChecked() && (
-          <DeleteTasksFromListButton
-            handleDeleteClick={this.handleDeleteClick}
+      <Grid container justify="center" alignItems="center" direction="column">
+        <Paper className={paper}>
+          <InputNewTaskField
+            addNewItem={this.addNewItem}
+            input={input}
+            button={button}
           />
-        )}
-      </div>
+          <TaskOfTheList
+            items={this.state.listItems}
+            addNewStatus={this.addNewStatus}
+          />
+          <LogoutButton button={button} cookies={cookies} />
+          {/* неявные приобразования */}
+          {this.anyChecked() && (
+            <DeleteTasksFromListButton
+              handleDeleteClick={this.handleDeleteClick}
+              button={button}
+            />
+          )}
+        </Paper>
+      </Grid>
     );
   }
 }
