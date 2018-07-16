@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 
 import Checkbox from '@material-ui/core/Checkbox';
 
-const CheckboxTaskOfTheList = (props) => {
-  const { addNewStatus, checked, itemIndex } = props;
-
-  return <Checkbox onChange={() => addNewStatus(itemIndex)} value={checked} />;
-};
+const CheckboxTaskOfTheList = ({ addNewStatus, checked, itemIndex }) => (
+  <Checkbox onChange={() => addNewStatus(itemIndex)} value={checked} />
+);
 
 CheckboxTaskOfTheList.propTypes = {
   addNewStatus: PropTypes.func.isRequired,

@@ -1,45 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link, Route, Switch } from 'react-router-dom';
+
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import Button from '@material-ui/core/Button';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-    padding: -12,
-    margin: 0,
-  },
-  flex: {
-    flex: 1,
-  },
-  menuButton: {
-    color: 'white',
-    height: 50,
-    width: 50,
-    maxWidth: 100,
-    padding: -22,
-    margin: 0,
-  },
-};
+import ToDoList from 'containers/ToDoList';
+import styles from './styles';
 
-class MenuAppBar extends React.Component {
+class NavMenu extends React.Component {
   state = {
     value: 'recents',
   };
 
   handleChange = (event, value) => {
     this.setState({ value });
+    console.log('value', value);
   };
 
   render() {
@@ -49,34 +28,29 @@ class MenuAppBar extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Toolbar />
-        </AppBar>
-
-        <AppBar position="static">
           <Toolbar>
-            <Button
-              className={classes.menuButton}
-              onClick={this.handleChange}
-              label="Recents"
-              value="recents"
-            >
-              sadas
-            </Button>
-            <Button href="/" className={classes.button}>
-              Link
-            </Button>
-            <Button className={classes.menuButton}>sadas</Button>
-            <div />
-            )}
+            <Tabs value={value} onChange={this.handleChange}>
+              <Tab
+                value={0}
+                label="toDoList"
+                component={Link}
+                to="/main/toDoList"
+              />
+              <Tab value={1} label="Map" component={Link} to="/main/map" />
+            </Tabs>
           </Toolbar>
         </AppBar>
+        <Switch>
+          <Route path="/main/toDoList" exact component={ToDoList} />
+          <Route path="/main/map" exact render={() => <p>sadasd</p>} />
+        </Switch>
       </div>
     );
   }
 }
 
-MenuAppBar.propTypes = {
+NavMenu.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAppBar);
+export default withStyles(styles)(NavMenu);

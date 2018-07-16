@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 
-const LogoutButton = withRouter((props) => {
-  const { button, cookies, history } = props;
-
+const LogoutButton = withRouter(({ button, cookies, history }) => {
   const onLogout = (e) => {
     cookies.remove('cookieAccess', { path: '/' });
     history.push('/');

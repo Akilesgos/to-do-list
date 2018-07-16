@@ -43,15 +43,14 @@ class Authorization extends Component {
     const { access } = this.state;
     return access || cookies.get('cookieAccess');
   };
-  render() {
-    console.info(`render() at${Date.now()}`);
 
+  render() {
     const {
       classes: { paper, containerform, textField, button },
     } = this.props;
 
     if (this.isAuthorized()) {
-      return <Redirect to="/toDoList" />;
+      return <Redirect to="/main" />;
     }
 
     return (

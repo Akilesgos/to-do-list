@@ -18,13 +18,9 @@ const RenderTaskOfTheList = (items, addNewStatus) => {
   ));
 };
 
-const TaskOfTheList = (props) => {
-  const { items, addNewStatus } = props;
-
-  return (
-    <List>{items.length > 0 && RenderTaskOfTheList(items, addNewStatus)}</List>
-  );
-};
+const TaskOfTheList = ({ items, addNewStatus }) => (
+  <List>{items.length > 0 && RenderTaskOfTheList(items, addNewStatus)}</List>
+);
 
 TaskOfTheList.propTypes = {
   addNewStatus: PropTypes.func.isRequired,
